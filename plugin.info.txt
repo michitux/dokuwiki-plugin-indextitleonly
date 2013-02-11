@@ -1,0 +1,7 @@
+base   indextitleonly
+author Michael Hamann
+email  michael@content-space.de
+date   2013-02-11
+name   indextitleonly plugin
+desc   Allows to specify a namespace in which only the page title is indexed
+url    https://www.dokuwiki.org/plugin:indextitleonly
