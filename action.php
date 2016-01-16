@@ -17,19 +17,19 @@ require_once DOKU_PLUGIN.'action.php';
 
 class action_plugin_indextitleonly extends DokuWiki_Action_Plugin {
 
-    public function register(Doku_Event_Handler &$controller) {
+    public function register(Doku_Event_Handler $controller) {
        $controller->register_hook('INDEXER_PAGE_ADD', 'BEFORE', $this, 'handle_indexer_page_add');
        $controller->register_hook('INDEXER_VERSION_GET', 'BEFORE', $this, 'handle_indexer_version_get');
     }
 
-    public function handle_indexer_page_add(Doku_Event &$event, $param) {
+    public function handle_indexer_page_add(Doku_Event $event, $param) {
         if (strpos(getNS($event->data['page']).':', $this->getConf('namespace')) === 0) {
             $event->data['body'] = $event->data['metadata']['title'];
             $event->preventDefault();
         }
     }
 
-    public function handle_indexer_version_get(Doku_Event &$event, $param) {
+    public function handle_indexer_version_get(Doku_Event $event, $param) {
         $event->data['indextitleonly'] = 1;
     }
 }
